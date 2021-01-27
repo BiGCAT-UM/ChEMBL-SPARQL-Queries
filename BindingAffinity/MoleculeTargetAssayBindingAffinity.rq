@@ -1,0 +1,17 @@
+PREFIX chembl: <http://rdf.ebi.ac.uk/terms/chembl#>
+
+SELECT distinct ?targetLabel ?molLabel ?assayLabel ?type ?value WHERE {
+
+  ?assay  chembl:hasTarget ?target.
+  
+  ?activity chembl:hasAssay  ?assay.
+  ?activity chembl:hasMolecule ?molecule .
+
+  ?target rdfs:label ?targetLabel.
+  ?molecule rdfs:label ?molLabel.
+  ?assay  rdfs:label ?assayLabel.
+  
+  ?activity chembl:type ?type.
+  ?activity chembl:standardValue ?value.
+
+} limit 100
