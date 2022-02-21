@@ -1,0 +1,16 @@
+PREFIX chembl: <http://rdf.ebi.ac.uk/terms/chembl#>
+PREFIX cheminf: <http://semanticscience.org/resource/>
+PREFIX chembl_mol: <http://rdf.ebi.ac.uk/resource/chembl/molecule/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+
+Select ?identifier ?image ?smilesDepict where{
+  
+  ?s a chembl:SmallMolecule.
+  ?s chembl:chemblId ?identifier.
+  ?s foaf:depiction ?image.
+  ?s cheminf:SIO_000008 [ a cheminf:CHEMINF_000018; 
+							cheminf:SIO_000300 ?smilesDepict].
+} LIMIT 100
