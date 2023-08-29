@@ -7,5 +7,5 @@ WHERE {
    ?dataset a void:Dataset ;
    dcterms:title ?titleLit ;
    dcterms:license ?license ;
-   pav:createdOn ?date .
+   pav:modified ?date .
 }
