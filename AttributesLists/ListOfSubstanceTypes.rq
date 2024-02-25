@@ -1,0 +1,10 @@
+PREFIX chembl: <http://rdf.ebi.ac.uk/terms/chembl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+select distinct ?o ?type ?superClass WHERE{
+  
+  ?s a ?type.
+  OPTIONAL{ ?type rdfs:subClassOf ?superClass }.
+  ?s chembl:substanceType ?o.
+  
+}

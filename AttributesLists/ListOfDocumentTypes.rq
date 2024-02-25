@@ -1,0 +1,8 @@
+PREFIX chembl: <http://rdf.ebi.ac.uk/terms/chembl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+select distinct ?o WHERE{
+  
+  ?s a chembl:Document.
+  ?s chembl:documentType ?o.
+}

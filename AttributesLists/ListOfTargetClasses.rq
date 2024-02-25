@@ -1,0 +1,10 @@
+PREFIX chembl: <http://rdf.ebi.ac.uk/terms/chembl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+select distinct ?oType ?oTypeLabel WHERE{
+  
+  ?s a chembl:Assay.
+  ?s chembl:hasTarget ?o.
+  ?o a ?oType.
+  ?oType rdfs:label ?oTypeLabel.
+ }
