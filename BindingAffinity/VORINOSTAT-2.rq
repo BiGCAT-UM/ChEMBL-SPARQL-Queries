@@ -1,0 +1,28 @@
+PREFIX chembl: <http://rdf.ebi.ac.uk/terms/chembl#>
+
+SELECT distinct ?targetLabel ?tType ?molLabel ?type ?cellLineLabel ?value WHERE {
+
+  ?assay  chembl:hasTarget ?target.
+  
+  ?target chembl:targetType ?tType.
+  FILTER(?tType = "SINGLE PROTEIN")
+
+  ?activity chembl:hasAssay  ?assay.
+  ?activity chembl:hasMolecule ?molecule .
+  
+  ?assay chembl:hasCellLine ?cellLine.
+
+  ?target rdfs:label ?targetLabel.
+  ?molecule rdfs:label ?molLabel.
+  ?assay  rdfs:label ?assayLabel.
+  ?cellLine  rdfs:label ?cellLineLabel.
+  
+  FILTER(strstarts(?targetLabel, STR("Histone deacetylase")))
+  FILTER(?molLabel = "VORINOSTAT")
+  FILTER(?cellLineLabel = "Sf9")
+  
+  ?activity chembl:type ?type.
+  FILTER(?type = "IC50")
+
+  ?activity chembl:standardValue ?value.
+} 
